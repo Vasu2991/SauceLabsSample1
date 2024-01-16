@@ -1,15 +1,8 @@
 package pages;
 
 import java.util.HashMap;
-
 import org.testng.Assert;
-import org.testng.AssertJUnit;
-
-import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import com.microsoft.playwright.Page;
-import io.cucumber.java.Scenario;
-
-
 
 public class SauceLabsLoginPage {
 	
@@ -28,9 +21,7 @@ public class SauceLabsLoginPage {
 		page.navigate((String) data.get("url"));
 		page.locator(Username).fill(data.get("username").toString());
 		page.locator(password).fill(data.get("password").toString());
-		page.waitForTimeout(3000);
 		page.locator(login).click();
-		page.waitForTimeout(6000);
 		String text = page.locator(products).textContent();
 		Assert.assertEquals(text, "Products");
 		
